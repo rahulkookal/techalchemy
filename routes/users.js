@@ -7,10 +7,10 @@ const generateToken = require('../lib/generate-jwt-token')
 /* POST create new user */
 router.post('/register', async function(req, res, next) {
   const { first_name, last_name, email, password } = req.body
-  const hash = await bcrypt.hash(password, 10);
-  const user = User.build({ firstName: first_name, lastName: last_name, password: hash, email: email });
-  await user.save();
-  res.send(user);
+  const hash = await bcrypt.hash(password, 10)
+  const user = User.build({ firstName: first_name, lastName: last_name, password: hash, email: email })
+  await user.save()
+  res.status(200).json(user)
 });
 
 /* POST login user */
@@ -32,7 +32,7 @@ router.post('/login', async function(req, res, next) {
     // TODO: Token should be stored on cache or highly availabe systems like fir verification
     // memcache or redis server
     await user.save()
-    res.send({token: user.token })
+    res.status(200).json({token: user.token })
   } else {
     throw new Error('Invalid Login')
   }
@@ -59,7 +59,7 @@ router.post('/logout', async function(req, res, next) {
 
     user.token = null
     await user.save()
-    res.send('User loged out')
+    res.status(200).json('User loged out')
   } catch (error) {
     res.status(401).json(error.message)
   }
