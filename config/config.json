@@ -1,23 +1,28 @@
 {
   "development": {
-    "username": "root",
+    "username": "postgres",
     "password": null,
-    "database": "database_development",
+    "database": "alc",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres",
+    "news_api_key" : "b36f50d8c84b49308dd3ee8da737f3da",
+    "open_whether_api_key": "f335dbef861912e2df3eeed5337cb362",
+    "secret_key": "b36f50d8c84b49308dd3ee8da737f3da"
   },
   "test": {
     "username": "root",
     "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "news_api_key" : "b36f50d8c84b49308dd3ee8da737f3da"
   },
   "production": {
     "username": "root",
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "news_api_key" : "b36f50d8c84b49308dd3ee8da737f3da"
   }
 }
