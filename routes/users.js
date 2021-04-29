@@ -2,7 +2,7 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
 const router = express.Router()
-const User = require('./../models')
+const { User } = require('./../models')
 const generateToken = require('../lib/generate-jwt-token')
 
 /* POST create new user */
@@ -44,7 +44,7 @@ router.post('/login', async function(req, res, next) {
 			user.token = await generateToken({
 				email: user.email
 			})
-			// TODO: Token should be stored on cache or highly availabe systems like fir verification
+			// TODO: Token should be stored on cache or highly availabe systems like
 			// memcache or redis server
 			await user.save()
 			res.status(200).json({
