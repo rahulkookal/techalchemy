@@ -43,7 +43,7 @@ INIT
         index := call indexOfSmallestElementOf temp
         call WriteToEnd file := output_file , element := temp[index]
         temp[index] := call ReadFirstElementAndRemoveFromFile 'file' + index
-        completed := call AllElementsAreEmpty array := temp
+        completed := call isAllElementsAreEmpty array := temp
     END
     
 END
