@@ -5,8 +5,8 @@ const getEverything = require('../lib/open-whether-api')
 /* GET news */
 router.get('/', async function (req, res, next) {
   const weather = await getEverything()
-
-  if (weather.cod === 200) {
+  console.log(weather)
+  if (weather.cod === '200') {
     const data = {
       count: weather.cnt,
       location: weather.city.name,
