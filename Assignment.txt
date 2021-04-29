@@ -1,0 +1,54 @@
+Question - Task 1
+You are a developer who accidently went back in time. You can’t return back to your timeline
+because you Time machine need to sort array from 10 Gigabytes of unsorted integer data. The
+problem in front of you is Machine during that time was not that advanced. You find a device with 1
+gigs of ram and 240 Gigabyte of hard drive.
+-They are all integers like 10000, 16723998 etc.
+-Same integer values can be repeatedly appearing in the file.
+Create a function to read 10 gigabytes of data and sort it. (Pseudo code and logic will also work)
+
+Pseudo code
+
+
+START
+INIT
+    segement := 0
+    read_completed := FALSE
+    completed := FALSE
+    input_file := 'MAIN_FILE'
+    output_file := 'OUT_FILE'
+
+    FUNCTION ReadNext10000Lines 
+        PassIn: segement, input_file      
+        RETURN call Read10000ElementsFileFrom file := input_file, start_from := segement * 10000
+    ENDFunction 
+
+    WHILE NOT read_completed
+        array = Call ReadNext10000Lines segement
+        IF array IS EMPTY
+            read_completed := TRUE
+        ELSE
+            sorted_array = call QUICK_SORT array
+            SAVE sorted_array AS 'file' + segement
+            segement := segement + 1
+        END        
+    ENDWHILE
+
+    temp := []
+    FOR N as 0 to segement
+        temp[N] := call ReadFirstElementAndRemoveFromFile 'file' + N
+    ENDFOR
+    
+    WHILE NOT completed
+        index := call indexOfSmallestElementOf temp
+        call WriteToEnd file := output_file , element := temp[index]
+        temp[index] := call ReadFirstElementAndRemoveFromFile 'file' + index
+        completed := call AllElementsAreEmpty
+    END
+    
+END
+
+
+
+
+
